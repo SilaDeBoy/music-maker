@@ -1,0 +1,372 @@
+:root {
+  --bg: #0f0f13;
+  --surface: #1a1a22;
+  --surface-2: #242430;
+  --accent: #7c5cff;
+  --accent-hover: #9478ff;
+  --text: #f0f0f5;
+  --muted: #8888a0;
+  --danger: #ff4d6a;
+  --success: #3dd68c;
+  --white-key: #f5f5f7;
+  --black-key: #1c1c24;
+  --active: #7c5cff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #a78bfa, #7c5cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  background: var(--surface);
+  padding: 1.25rem 1.5rem;
+  border-radius: 14px;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 120px;
+  flex: 1;
+}
+
+.control-group label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+select, input[type="range"] {
+  accent-color: var(--accent);
+}
+
+select {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 6px;
+}
+
+/* Piano */
+.piano-section {
+  margin-bottom: 2.5rem;
+}
+
+.piano-section h2,
+.drums-section h2,
+.record-section h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.9rem;
+  font-weight: 600;
+}
+
+.piano {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 180px;
+  user-select: none;
+  margin-bottom: 0.75rem;
+}
+
+.key {
+  position: relative;
+  border-radius: 0 0 6px 6px;
+  cursor: pointer;
+  transition: background 0.08s, transform 0.08s;
+}
+
+.white {
+  width: 48px;
+  height: 180px;
+  background: var(--white-key);
+  border: 1px solid #ccc;
+  z-index: 1;
+  margin: 0 1px;
+  color: #333;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.black {
+  width: 30px;
+  height: 110px;
+  background: var(--black-key);
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  border: 1px solid #111;
+  color: #aaa;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+  font-size: 0.65rem;
+}
+
+.key.active,
+.key:active {
+  background: var(--accent) !important;
+  color: white;
+  transform: translateY(2px);
+}
+
+.hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* Drums */
+.drums-section {
+  margin-bottom: 2.5rem;
+}
+
+.drums-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.seq-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.tempo-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.tempo-label input {
+  width: 100px;
+}
+
+.sequencer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: var(--surface);
+  padding: 1.25rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.drum-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.drum-label {
+  width: 70px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.steps {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+}
+
+.step {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid rgba(255,255,255,0.07);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, transform 0.1s;
+}
+
+.step:hover {
+  border-color: var(--accent);
+}
+
+.step.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(124, 92, 255, 0.45);
+}
+
+.step.playing {
+  outline: 2px solid #fff;
+  outline-offset: 1px;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn:hover:not(:disabled) {
+  background: #2e2e3c;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn.record {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: white;
+}
+
+.btn.record:hover:not(:disabled) {
+  background: #ff6b84;
+}
+
+.btn.download {
+  background: var(--success);
+  border-color: var(--success);
+  color: #0a0a0a;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn.download:hover {
+  background: #4ae89a;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Record */
+.record-section {
+  margin-bottom: 2rem;
+}
+
+.record-controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.status {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .white {
+    width: 34px;
+    height: 140px;
+  }
+  .black {
+    width: 22px;
+    height: 85px;
+  }
+  .piano {
+    height: 140px;
+  }
+  .step {
+    width: 28px;
+    height: 28px;
+  }
+  .drum-label {
+    width: 55px;
+    font-size: 0.75rem;
+  }
+}
